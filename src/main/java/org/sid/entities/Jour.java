@@ -22,5 +22,5 @@ public class Jour {
     @OneToMany(mappedBy = "jour", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PointEntity> points;
     @OneToOne(cascade = CascadeType.ALL)
-    private Route routes;
+    private Route route;
 }

@@ -8,6 +8,8 @@ import org.sid.entities.Jour;
 @Mapper(componentModel = "spring")
 public interface JourMapper {
     JourMapper INSTANCE = Mappers.getMapper(JourMapper.class);
-    Jour toEntity(JourDTO jourDTO);
+
     JourDTO toDTO(Jour jour);
+
+    Jour toEntity(JourDTO jourDTO);
 }

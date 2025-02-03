@@ -18,6 +18,6 @@ public class Route {
     private String mode;
     @Column(columnDefinition = "geometry(LineString,4326)")
     private LineString path;
-    @OneToOne(mappedBy = "routes", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "route", cascade = CascadeType.ALL)
     private Jour jour;
 }
