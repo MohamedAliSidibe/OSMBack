@@ -1,16 +1,14 @@
 package org.sid.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 import org.sid.dto.VoyageDTO;
 import org.sid.entities.Voyage;
+import org.mapstruct.Mapper;
+import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = JourMapper.class)
 public interface VoyageMapper {
-    VoyageMapper INSTANCE = Mappers.getMapper(VoyageMapper.class);
-
+    VoyageDTO toDto(Voyage voyage);
     Voyage toEntity(VoyageDTO voyageDTO);
-
-    VoyageDTO toDTO(Voyage voyage);
+    List<VoyageDTO> toDtoList(List<Voyage> voyages);
+    List<Voyage> toEntityList(List<VoyageDTO> voyageDTOs);
 }
