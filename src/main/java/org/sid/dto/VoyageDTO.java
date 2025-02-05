@@ -1,18 +1,14 @@
 package org.sid.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.List;
-@Getter
-@Setter
-@AllArgsConstructor
+
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class VoyageDTO {
-    private long id;
-    @NotBlank(message = "Le nom est obligatoire")
+    private String id;
     private String name;
-    //private List<Jour> jours;
+    private List<JourDTO> jours;
 }
