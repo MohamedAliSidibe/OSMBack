@@ -28,12 +28,12 @@ public class VoyagesEtPartagesApplication {
 		return args -> {
 			GeometryFactory geometryFactory = new GeometryFactory();
 
-			// 1️⃣ Création du premier voyage "Paris Classique"
+			// Création du premier voyage "Paris Classique"
 			Voyage voyage1 = new Voyage();
 			voyage1.setId("voyage1");
 			voyage1.setName("Paris Classique");
 
-			// 📌 Ajout des 3 jours avec une fonction générique
+			// Ajout des 3 jours avec une fonction générique
 			List<Jour> jours = new ArrayList<>();
 			jours.add(createJour(1, "walking", List.of(
 					createPoint("Tour Eiffel", 2.2945, 48.8584, "tour eiffel", "09:00", "10:30", "Un des monuments les plus célèbres au monde. Situé à Paris, la Tour Eiffel est une prouesse architecturale."),
@@ -67,6 +67,60 @@ public class VoyagesEtPartagesApplication {
 
 			voyage1.setJours(jours);
 			voyageRepository.save(voyage1);
+
+			//////////////////////////////////////////////////////////////////////////
+
+			// Création du deuxième voyage "Montagnes et Vallées"
+			Voyage voyage2 = new Voyage();
+			voyage2.setId("voyage2");
+			voyage2.setName("Montagnes et Vallées");
+
+			// Ajout des 3 jours avec la bonne logique
+			List<Jour> jours2 = new ArrayList<>();
+
+			jours2.add(createJour(1, "driving", List.of(
+					createPoint("Mont Blanc", 6.8651, 45.8326, "mont blanc", "08:00", "10:00", "Le sommet le plus haut d'Europe, offrant des vues spectaculaires."),
+					createPoint("Lac d'Annecy", 6.1298, 45.8993, "lac annecy", "11:00", "13:00", "Un lac cristallin entouré de montagnes."),
+					createPoint("Gorges du Verdon", 6.3833, 43.7911, "gorges du verdon", "15:00", "18:00", "Les plus grandes gorges d'Europe, parfaites pour des randonnées.")
+			), geometryFactory));
+
+			jours2.add(createJour(2, "walking", List.of(
+					createPoint("Parc naturel de Chartreuse", 5.8232, 45.3496, "parc naturel chartreuse", "08:30", "11:30", "Un parc naturel offrant une biodiversité unique et des paysages magnifiques."),
+					createPoint("Château de Chambéry", 5.9212, 45.5650, "chateau chambery", "13:00", "15:00", "Un château historique datant de la période médiévale.")
+			), geometryFactory));
+
+			jours2.add(createJour(3, "walking", List.of(
+					createPoint("Les Deux Alpes", 6.121, 45.015, "les deux alpes", "09:00", "12:00", "Une station de ski réputée avec des vues à couper le souffle."),
+					createPoint("Grenoble Bastille", 5.7302, 45.198, "grenoble bastille", "14:00", "17:00", "Un fort militaire accessible par téléphérique offrant une vue panoramique.")
+			), geometryFactory));
+
+			voyage2.setJours(jours2);
+			voyageRepository.save(voyage2);
+
+			////////////////////////////////////////////////////////////////
+
+			//  Création du troisième voyage "Côte Méditerranéenne"
+			Voyage voyage3 = new Voyage();
+			voyage3.setId("voyage3");
+			voyage3.setName("Côte Méditerranéenne");
+
+			//  Ajout des jours avec leurs points
+			List<Jour> jours3 = new ArrayList<>();
+
+			jours3.add(createJour(1, "driving", List.of(
+					createPoint("Promenade des Anglais", 7.2655, 43.6957, "promenade des anglais", "09:00", "10:30", "Une promenade emblématique longeant la Méditerranée."),
+					createPoint("Vieux Nice", 7.2734, 43.6983, "vieux nice", "11:00", "12:30", "Un quartier historique avec des ruelles charmantes."),
+					createPoint("Monaco", 7.4246, 43.7374, "monaco", "14:00", "17:00", "Un lieu de luxe et de beauté sur la Côte d'Azur.")
+			), geometryFactory));
+
+			jours3.add(createJour(2, "walking", List.of(
+					createPoint("Antibes", 7.1278, 43.5804, "antibes", "09:00", "12:00", "Une ville charmante avec des plages magnifiques et un centre historique."),
+					createPoint("Saint-Tropez", 6.635, 43.2704, "saint tropez", "14:00", "17:00", "Un village connu pour son port, ses plages et son ambiance festive.")
+			), geometryFactory));
+
+			voyage3.setJours(jours3);
+			voyageRepository.save(voyage3);
+
 		};
 	}
 
