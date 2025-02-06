@@ -4,10 +4,12 @@ import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.Point;
+import org.sid.dto.VoyageDTO;
 import org.sid.entities.Jour;
 import org.sid.entities.PointDetail;
 import org.sid.entities.Voyage;
 import org.sid.repository.VoyageRepository;
+import org.sid.services.VoyageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +26,7 @@ public class VoyagesEtPartagesApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(VoyageRepository voyageRepository) {
+	CommandLineRunner runner(VoyageRepository voyageRepository, VoyageService voyageService) {
 		return args -> {
 			GeometryFactory geometryFactory = new GeometryFactory();
 
@@ -120,6 +122,12 @@ public class VoyagesEtPartagesApplication {
 
 			voyage3.setJours(jours3);
 			voyageRepository.save(voyage3);
+
+
+			/*List<VoyageDTO> voyages = voyageService.getAllVoyages();
+			System.out.println("Nombre de voyages récupérés : " + (voyages != null ? voyages.size() : "null"));
+
+			voyages.stream().forEach(e -> System.out.println(e.getName()));*/
 
 		};
 	}
