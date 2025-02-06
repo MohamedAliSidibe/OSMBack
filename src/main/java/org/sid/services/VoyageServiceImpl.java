@@ -1,5 +1,6 @@
 package org.sid.services;
 
+import jakarta.transaction.Transactional;
 import org.sid.dto.VoyageDTO;
 import org.sid.entities.Voyage;
 import org.sid.mapper.VoyageMapper;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class VoyageServiceImpl  implements VoyageService{
     private final VoyageRepository voyageRepository;
     private final VoyageMapper voyageMapper;
@@ -20,7 +20,10 @@ public class VoyageServiceImpl  implements VoyageService{
     }
 
     @Override
+    @Transactional
     public List<VoyageDTO> getAllVoyages() {
+        voyageMapper.toDtoList(voyageRepository.findAll()).stream()
+                .forEach(e-> System.out.println(e.getName()));
         return voyageMapper.toDtoList(voyageRepository.findAll());
     }
 

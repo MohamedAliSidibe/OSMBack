@@ -1,12 +1,15 @@
-package org.sid.services.web;
+package org.sid.web;
 
 import org.sid.dto.VoyageDTO;
 import org.sid.services.VoyageService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
+@CrossOrigin(origins = "*")
 public class VoyageControllerImpl implements VoyageController{
     private final VoyageService voyageService;
 
@@ -16,6 +19,7 @@ public class VoyageControllerImpl implements VoyageController{
 
     @Override
     public List<VoyageDTO> getAllVoyages() {
+        System.out.println("momo");
         return voyageService.getAllVoyages();
     }
 
